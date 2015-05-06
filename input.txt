@@ -1,0 +1,2 @@
+$Path = "C:\Users\admins4v89kr\Desktop\output\*"
+$files = .aspx, .js

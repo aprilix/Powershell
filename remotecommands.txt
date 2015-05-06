@@ -1,0 +1,7 @@
+sc config "WinRM" start= auto
+
+net start WinRM
+
+winrm create winrm/config/listener?Address=*+Transport=HTTP
+
+netsh firewall add portopening TCP 80 "Windows Remote Management"

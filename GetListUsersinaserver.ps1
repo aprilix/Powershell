@@ -1,0 +1,5 @@
+$servers = gc "C:\Users\admins4v89kr\Desktop\servers.txt"
+foreach($server in $servers)
+{
+Get-WmiObject -ComputerName $servers -Class Win32_UserAccount -Namespace "root\cimv2" -Filter "LocalAccount='$True'"
+} 

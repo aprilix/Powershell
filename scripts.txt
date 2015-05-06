@@ -1,0 +1,131 @@
+Enter / Exit-PSSession is mainly aimed at interactive use. If you want to run this kind of thing against multiple servers you’ll find it better to run Invoke-Command. By default this will run against 32 servers concurrently, e.g.
+
+
+Invoke-Command -ComputerName "vlpmqa",'vlpmqa2","vlpmwebqa","vlpmwebqa2" -ScriptBlock {$path = ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp’;Set-ItemProperty -Path $path -Name “MinEncryptionLevel” -Value “Auth User”; -Value “1”}
+
+
+Invoke-Command -ComputerName "vlpmqa","vlpmqa2","vlpmwebqa","vlpmwebqa2" -ScriptBlock {$path = ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp’;Set-ItemProperty -Path $path -Name “MinEncryptionLevel” -Value “3”}
+
+
+
+$path = cd 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp'
+Get-ItemProperty  -Name "MinEncryptionLevel" -Path $Path
+
+
+foreach($server in $servers)
+$path = cd 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp'
+Get-ItemProperty  -Name "MinEncryptionLevel" -Path $Path
+
+foreach($server in $servers)
+{
+$path = cd 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp'
+Get-ItemProperty  -Name "MinEncryptionLevel" -Path $Path 
+}
+
+
+$Servers = get-content C:\Servers.txt
+foreach ($Server in $Servers)
+{
+ $regvalue = Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp"
+
+        
+        $regkey = $reg.OpenSubkey("HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp")
+        $servertype = $regkey.GetValue("MinEncryptionLevel")
+
+        ('"{0}","{1}"' -f $Server, $servertype) | out-file C:\stdout.csv -append
+    } catch {
+        ('"{0}","{1}"' -f $Server, $_) | out-file C:\stderr.csv -append
+    }
+}
+
+PS C:\Users\admins4v89kr> Get-ItemProperty $path = "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
+-Tcp" -Name MinEncryptionLevel
+
+
+Get-Shapes | Where-Object {$_.MinEncryptionLevel -eq "3"} | Sort-Object Size
+
+
+$regvalue | Where-Object {$_.Name -match ".*MinEncryptionLevel.*" }
+
+
+$path = "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
+$regvalue = Get-ItemProperty -Path $Path 
+$Servers = get-content P:\Data\ServersBAD.txt
+foreach ($Server in $Servers)
+
+
+
+        ('"{0}","{1}"' -f $Server, $servertype) | out-file P:\Data\stdout.csv -append
+    } catch {
+        ('"{0}","{1}"' -f $Server, $_) | out-file P:\Data\stderr.csv -append
+    }
+}
+
+
+
+Import-Module WebAdministration
+Set-ItemProperty IIS:\Sites\Default Web Site\ -name physicalPath -value $siteConfig.path
+
+for /f %i in vlpmqa do reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-tcp" | findstr /I 
+
+"minencryptionlevel""minencryptionlevel" do psexec \\%i ipconfig >> result.txt
+
+for /f %i in (servers.txt) do psexec \\%i ipconfig >> result.txt
+
+
+
+foreach($comp in (get-content c:\temp\servers.txt)){
+write-output '---------------------------------' | out-file -append c:\temp\export.log
+write-output $comp | out-file -append c:\temp\export.log
+write-output '---------------------------------' | out-file -append c:\temp\export.log
+reg query \\$comp\HKLM\Software\TrendMicro /s |out-file -append c:\temp\export.log
+}
+
+________________________________________________________________________________________________________________________________________
+
+
+Change the RDP Encryption Level
+
+Invoke-Command -ComputerName "vlpmqa","vlpmqa2","vliosdev","vliosdev2" -ScriptBlock {$path = ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp’;Set-ItemProperty -Path $path -Name “MinEncryptionLevel” -Value “3”}
+
+
+
+Backup the Registry
+
+Reg export "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-tcp" MinEncryptionLevel.reg
+
+REGEDIT /E d:\path\filename.REG "HKEY_XXXX\Whatever Key"
+
+Query the value of the servers
+
+Invoke-Command -ComputerName "vlpmwebdev2" -ScriptBlock
+{$path = `HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp';Get-ItemProperty -Path $path -Name
+ "MinEncryptionLevel"}  | Format-List -GroupBy PSComputerName > output.txt
+
+
+
+$Servers = Get-Content "C:\Users\admins4v89kr\Desktop\servers.txt"
+foreach ($Server in $Servers){
+Reg export "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-tcp" MinEncryptionLevel.reg
+}
+
+
+for /f %i in servers.txt do .\PsExec.exe \\%i c:\regexport.bat >> result.txt
+
+
+for /f %i in servers.txt do .\PsExec.exe \\%i C:\Remot.ps1
+
+
+
+
+.\PsExec.exe \\vliosdev c:\regexport.bat
+
+
+$servers = gc "C:\Users\admins4v89kr\Desktop\servers.txt"
+foreach($server in $servers)
+{
+Set-ExecutionPolicy -executionpolicy remotesigned -force
+}
+
+
+Configure-SMRemoting.ps1 -Enable -Force
