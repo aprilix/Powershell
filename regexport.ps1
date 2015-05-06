@@ -1,4 +1,4 @@
-$Servers = Get-Content  "C:\Users\admins4v89kr\Desktop\servers.txt"
+$Servers = Get-Content  "C:\Users\Desktop\servers.txt"
 
  foreach ($Server in $Servers){
 

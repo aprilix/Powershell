@@ -1,5 +1,5 @@
 $number = 1
-$cipath = "C:\ContiniousIntegration\StorePortal"
+$cipath = "C:\ContiniousIntegration"
 $Directory = gci $cipath | sort LastWriteTime | select -last 1
 $DirectoryName= $directory.Name
 $lastnumber = $DirectoryName.Split(".")[-1]

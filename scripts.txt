@@ -1,10 +1,10 @@
 Enter / Exit-PSSession is mainly aimed at interactive use. If you want to run this kind of thing against multiple servers you’ll find it better to run Invoke-Command. By default this will run against 32 servers concurrently, e.g.
 
 
-Invoke-Command -ComputerName "vlpmqa",'vlpmqa2","vlpmwebqa","vlpmwebqa2" -ScriptBlock {$path = ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp’;Set-ItemProperty -Path $path -Name “MinEncryptionLevel” -Value “Auth User”; -Value “1”}
+Invoke-Command -ComputerName "Server1","Server2"  -ScriptBlock {$path = ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp’;Set-ItemProperty -Path $path -Name “MinEncryptionLevel” -Value “Auth User”; -Value “1”}
 
 
-Invoke-Command -ComputerName "vlpmqa","vlpmqa2","vlpmwebqa","vlpmwebqa2" -ScriptBlock {$path = ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp’;Set-ItemProperty -Path $path -Name “MinEncryptionLevel” -Value “3”}
+Invoke-Command -ComputerName "Server1","Server2" -ScriptBlock {$path = ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp’;Set-ItemProperty -Path $path -Name “MinEncryptionLevel” -Value “3”}
 
 
 
@@ -86,7 +86,7 @@ ________________________________________________________________________________
 
 Change the RDP Encryption Level
 
-Invoke-Command -ComputerName "vlpmqa","vlpmqa2","vliosdev","vliosdev2" -ScriptBlock {$path = ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp’;Set-ItemProperty -Path $path -Name “MinEncryptionLevel” -Value “3”}
+Invoke-Command -ComputerName "server1","server2" -ScriptBlock {$path = ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp’;Set-ItemProperty -Path $path -Name “MinEncryptionLevel” -Value “3”}
 
 
 
@@ -98,7 +98,7 @@ REGEDIT /E d:\path\filename.REG "HKEY_XXXX\Whatever Key"
 
 Query the value of the servers
 
-Invoke-Command -ComputerName "vlpmwebdev2" -ScriptBlock
+Invoke-Command -ComputerName "Server1" -ScriptBlock
 {$path = `HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp';Get-ItemProperty -Path $path -Name
  "MinEncryptionLevel"}  | Format-List -GroupBy PSComputerName > output.txt
 

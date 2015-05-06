@@ -18,7 +18,7 @@ set-itemproperty -path $regkey -name MinEncryptionLevel -value 3
 
 # Run on your management machine/machine you are using to update all others...
 
-$computers = @("vlpmwebqa","vlpmwebqa2","vlpmqa","vlpmqa2")
+$computers = @("Server1","Server2")
 foreach ($computer in $computers) {
     Enter-PSSession $computer
     cd 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion'

@@ -4,7 +4,7 @@ function Unmanage-Solarwinds([int] $Minutes, [string] $servers)
 	cmd /C Pause
 	cd "C:\Program Files (x86)\SolarWinds\Orion SDK\SWQL Studio"
 	Import-Module .\SwisPowerShell.dll
-	$Swis = Connect-Swis -Trusted -Hostname vlmonapp.scif.com
+	$Swis = Connect-Swis -Trusted -Hostname server1
 	$uris = Get-Content $servers | foreach { Get-SwisData $swis "SELECT URI FROM Orion.Nodes WHERE DNS like '$_'" }
 	$srvrs = gc $servers
 	if ($uris.Count –ne $srvrs.Count)
@@ -23,7 +23,7 @@ Write-Host Above Servers have been Unmanaged  for $Minutes Minutes -ForegroundCo
 function Manage-Solarwinds([string] $servers){ 
 cd "C:\Program Files (x86)\SolarWinds\Orion SDK\SWQL Studio"
 Import-Module .\SwisPowerShell.dll
-$Swis = Connect-Swis -Trusted -Hostname vlmonapp.scif.com
+$Swis = Connect-Swis -Trusted -Hostname server1
 $uris = Get-Content $servers | foreach {Get-SwisData $swis "SELECT URI FROM Orion.Nodes WHERE DNS like '$_'"}
 $srvrs = gc $servers
 if ($uris.Count –ne $srvrs.Count) { Write-Host “Some or all of the servers in the input file doesn't exist in Solarwinds or it requires FQDN to be identified, Please Add the Domain to the servername” -ForegroundColor Red

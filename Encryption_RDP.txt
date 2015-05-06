@@ -1,1 +1,0 @@
-Invoke-Command -ComputerName "vlpmqa",'vlpmqa2","vlpmwebqa","vlpmwebqa2" -ScriptBlock {$path = ‘HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp’;Set-ItemProperty -Path $path -Name “MinEncryptionLevel” -Value “1”}

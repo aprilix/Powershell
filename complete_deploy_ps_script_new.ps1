@@ -219,7 +219,7 @@ Foreach ($srv in $srvrs)
 
 Write-Host Validating endpoint URL response
 
-$requesturlarray = @( "http://rkstrtndevapp1/2Return/Login.aspx", "http://rkstrtnuatapp1/2Return/Login.aspx", "http://rkstrtnqaapp1/2Return/Login.aspx")
+$requesturlarray = @( "http://server1/Login.aspx", "http://server2/Login.aspx", "http://server3/Login.aspx")
 
 foreach ($i in $requesturlarray ){
 

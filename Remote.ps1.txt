@@ -1,2 +1,0 @@
-Enable-PSRemoting -Force
-Configure-SMRemoting.ps1 -enable -force

@@ -3,7 +3,7 @@ Write-Host " Please ensure input file contains DNS name of the servers you wish 
 cmd /C Pause
 cd "C:\Program Files (x86)\SolarWinds\Orion SDK\SWQL Studio"
 Import-Module .\SwisPowerShell.dll
-$Swis = Connect-Swis -Trusted -Hostname vlmonapp.scif.com
+$Swis = Connect-Swis -Trusted -Hostname server1.com
 $uris = Get-Content $servers | foreach {Get-SwisData $swis "SELECT URI FROM Orion.Nodes WHERE DNS like '$_'"}
 $srvrs = gc $servers
 if ($uris.Count –ne $srvrs.Count) { Write-Host “Servers in the input file doesn't exist in Solarwinds or it requires FQDN to be identified” -ForegroundColor Red } 

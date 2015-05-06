@@ -7,10 +7,10 @@ PS C:\Scripts> .\Test-Connection.ps1 -Servers .\Server.txt
 
 ServerName                              TimeStamp                               Results
 ----------                              ---------                               -------
-RKSTBLD1                                2014-11-20T16:43:48                     Up
-SACSCOMWEB1                             2014-11-20T16:43:48                     Up
-SACSCOMWEB2                             2014-11-20T16:43:48                     Up
-SACSCOMWEB3                             2014-11-20T16:43:48                     Down
+SERVER1                                2014-11-20T16:43:48                     Up
+SERVER2                             2014-11-20T16:43:48                     Up
+SERVER3                             2014-11-20T16:43:48                     Up
+SERVER4                             2014-11-20T16:43:48                     Down
 
 
 
@@ -24,11 +24,11 @@ PS C:\Scripts> .\Test-RDP.ps1 -Servers .\Server.txt
 
 Working on RKSTBLD1
 RDP Works
-Working on SACSCOMWEB1
+Working on SERVER1
 RDP Works
-Working on SACSCOMWEB2
+Working on SERVER2
 RDP Works
-Working on SACSCOMWEB3
+Working on SERVER3
 WARNING: RDP Failed, Either the server is offline or the name is incorrect
 
 
@@ -38,6 +38,6 @@ Test-WebApp.ps1 script can be used to test HTTP Statuscode/response of applicati
 
 
                    URL	                             StatusCode  StatusDescription  ResponseLength   TimeTaken
-https://strwebapps.wsgc.com/StorePortal/Login.aspx       200	       OK	         7491         482.6215
-https://storeorders.wsgc.com/OFOSv2/                     200           OK               52462         768.8541
-http://www.williams-sonoma.com/                          200           OK              124558        1862.5195
+https://TEST/Login.aspx       200	       OK	         7491         482.6215
+https://TEST1/Login.aspx                    200           OK               52462         768.8541
+http://TEST2/Login.aspx                          200           OK              124558        1862.5195

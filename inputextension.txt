@@ -1,9 +1,0 @@
-.log
-.txt
-.pdb
-.config
-.zip
-.dll
-.js
-.aspx
-.html 

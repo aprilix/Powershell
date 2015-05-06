@@ -1,5 +1,5 @@
 ﻿Function Test-ApplicationURL(){
-$requesturlarray = @("http://rkstrtndevapp1/2Return/Login.aspx", "http://rkstrtnuatapp1/2Return/Login.aspx", "http://rkstrtnqaapp1/2Return/Login.aspx")
+$requesturlarray = @("http://TEST1/Login.aspx", "http://TEST2/Login.aspx", "http://TEST3/Login.aspx")
 foreach ($i in $requesturlarray)
 {
 	Try { $response = Invoke-WebRequest -Uri $i }

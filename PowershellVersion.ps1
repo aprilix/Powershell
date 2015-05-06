@@ -1,2 +1,0 @@
-$servers = (Get-Content .\Servers.txt) 
-Invoke-Command -ComputerName $servers -ScriptBlock {$path = ‘HKLM:\SOFTWARE\Microsoft\PowerShell\1\PowerShellEngine’;Get-ItemProperty -Path $path -Name “PowerShellVersion” } | ft -Property PowerShellVersion -GroupBy PSComputername

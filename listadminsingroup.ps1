@@ -7,5 +7,5 @@ New-Object PSObject -Property @{
  Group = "Administrators"
  Members=$members
  }
-} -computer vliosdev,vliosdev2,vliosqa.vliosqa2.vlioswebqa.vlioswebqa2 | 
+} -computer Server,server1,server2 | 
 Select * -ExcludeProperty RunspaceID
