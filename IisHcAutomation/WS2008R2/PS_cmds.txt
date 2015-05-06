@@ -1,0 +1,29 @@
+# List of BizTalk Servers. This is needed, so that the rest of the commands will execute on all of them.
+$BizTalkServers = "BizTalkServer1","BizTalkServer2"
+
+# Ping servers (latency check)
+$BizTalkServers | foreach-object {"================";$_;"================";ping $_}
+
+# Pathping (packet loss check)
+$BizTalkServers | foreach-object {"================";$_;"================";pathping $_}
+
+# Get Total Physical Memory
+$BizTalkServers | ForEach-Object {"================";$_;"================";Get-wmiobject -Query "SELECT TotalPhysicalMemory FROM Win32_ComputerSystem" -ComputerName $_} | Format-List TotalPhysicalMemory
+
+# Installed hotfixes (quick)
+$BizTalkServers | ForEach-Object {"================";$_;"================";Get-wmiobject -Query "SELECT HotFixID,ServicePackInEffect FROM Win32_QuickFixEngineering" -ComputerName $_} | Format-list HotfixID, ServicePackInEffect
+
+# NumberOfProcessors
+$BizTalkServers | ForEach-Object {"================";$_;"================";Get-wmiobject -Query "SELECT NumberOfProcessors FROM Win32_ComputerSystem" -ComputerName $_} | Format-List NumberOfProcessors
+
+# System Information
+$BizTalkServers | ForEach-Object {"================";$_;"================";Get-wmiobject -Query "SELECT Caption, CSDVersion, MaxProcessMemorySize, PAEEnabled, ServicePackMajorVersion FROM Win32_OperatingSystem" -ComputerName $_} | Format-List Caption, ServicePackMajorVersion, CSDVersion, MaxProcessMemorySize, PAEEnabled
+
+# Clock Synchronization Check
+$BizTalkServers | ForEach-Object {"================";$_;"================";Get-wmiobject -Query "SELECT * FROM Win32_LocalTime" -ComputerName $_} | format-list Year, Month, Day, Hour, Minute, Second
+
+# BizTalk Host Instance information (WMIC) (Must be ran locally) (WMIC is native to the operating system)
+wmic /NAMESPACE:"\\root\MicrosoftBizTalkServer" PATH MSBTS_HostInstance GET HostName, HostType, Logon, NTGroupName, RunningServer
+
+# BizTalk Host Instance information (PowerShell) (Must be ran locally) (PowerShell must be installed)
+$BizTalkServers | ForEach-Object {"================";$_;"================";Get-wmiobject -Namespace "root\MicrosoftBizTalkServer" -Query "SELECT * FROM MSBTS_Host" -ComputerName $_} | Format-List HostName, HostType, Logon, NTGroupName, RunningServer

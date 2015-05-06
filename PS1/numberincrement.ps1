@@ -1,0 +1,10 @@
+$number = 1
+$cipath = "C:\ContiniousIntegration\StorePortal"
+$Directory = gci $cipath | sort LastWriteTime | select -last 1
+$DirectoryName= $directory.Name
+$lastnumber = $DirectoryName.Split(".")[-1]
+$newNumber = [int]$lastnumber + [int]$number
+$split1 = $DirectoryName.Split(".")[1] + "." + $DirectoryName.Split(".")[2] + "." + $newNumber
+$Split2 = $DirectoryName.Split(".")[0]
+$result = $split2 + "." + $Split1
+$NewDirectory = New-Item -Name $result -ItemType directory -Path $cipath

@@ -1,0 +1,43 @@
+Help for Test-Connection.ps1 
+
+Test-Connection.ps1 script can be used to test the uptime or availability of the server/servers. The script has -Computers parameters which will require path to text file which contains all the servers we want to test. Please see below output for reference.
+
+
+PS C:\Scripts> .\Test-Connection.ps1 -Servers .\Server.txt
+
+ServerName                              TimeStamp                               Results
+----------                              ---------                               -------
+RKSTBLD1                                2014-11-20T16:43:48                     Up
+SACSCOMWEB1                             2014-11-20T16:43:48                     Up
+SACSCOMWEB2                             2014-11-20T16:43:48                     Up
+SACSCOMWEB3                             2014-11-20T16:43:48                     Down
+
+
+
+Help for Test-RDP.ps1 
+
+Test-RDP.ps1 script can be used to test whether the RDP connection of a server/servers. The script has -Computers parameters which will require path to text file which contains all the servers we want to test. Please see below output for reference.
+
+
+PS C:\Scripts> .\Test-RDP.ps1 -Servers .\Server.txt
+
+
+Working on RKSTBLD1
+RDP Works
+Working on SACSCOMWEB1
+RDP Works
+Working on SACSCOMWEB2
+RDP Works
+Working on SACSCOMWEB3
+WARNING: RDP Failed, Either the server is offline or the name is incorrect
+
+
+Help for Test-WebApp.ps1 
+
+Test-WebApp.ps1 script can be used to test HTTP Statuscode/response of applications/URL's hosted on a server/servers. The script requires ./URL.txt file which contains all the URL's we want to test. Please see below output for reference.
+
+
+                   URL	                             StatusCode  StatusDescription  ResponseLength   TimeTaken
+https://strwebapps.wsgc.com/StorePortal/Login.aspx       200	       OK	         7491         482.6215
+https://storeorders.wsgc.com/OFOSv2/                     200           OK               52462         768.8541
+http://www.williams-sonoma.com/                          200           OK              124558        1862.5195

@@ -1,0 +1,1 @@
+Reg export "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-tcp" MinEncryptionLevel.reg

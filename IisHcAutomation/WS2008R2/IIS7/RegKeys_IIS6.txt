@@ -1,0 +1,8 @@
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\IISADMIN
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\InetInfo
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ASP.NET_1.1.4322
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ASP.NET_2.0.50727
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ASP.NET
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ASP\Performance
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\aspnet_state
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W3SVC

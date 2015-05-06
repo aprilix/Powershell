@@ -1,0 +1,6 @@
+Enterprise Vault Directory Service
+EnterpriseVaultAdminService
+EnterpriseVaultIndexingService
+EnterpriseVaultShoppingService
+EnterpriseVaultStorageService
+EnterpriseVaultTaskControllerService
